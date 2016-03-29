@@ -33,9 +33,16 @@ public class player : MonoBehaviour {
 		transform.position = new Vector3 (transform.position.x, 0f, transform.position.z);
 		if (forward) {
 
-			Vector3 pos = Vector3.forward * speed;
+			Vector3 move = Vector3.forward * speed;
 
-			transform.Translate (pos * Time.fixedDeltaTime);
+			if (Input.GetKey (KeyCode.A)) {
+				move = move + (Vector3.left * (speed));  
+			}
+			if (Input.GetKey (KeyCode.D)) {
+				move = move + (Vector3.right * (speed));
+			}
+
+			transform.Translate (move * Time.fixedDeltaTime);
 		}
 
 	}
