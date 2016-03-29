@@ -6,7 +6,7 @@ public class player : MonoBehaviour {
 
 	// Use this for initialization
 	private Transform transform;
-	private float speed = 2100f;
+	private float speed = 150f;
 	public Renderer rend;
 	public Material mat;
 	public bool forward = true;
@@ -30,7 +30,7 @@ public class player : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		transform.position = new Vector3 (transform.position.x, 5f, transform.position.z);
+		transform.position = new Vector3 (transform.position.x, 0f, transform.position.z);
 		if (forward) {
 
 			Vector3 pos = Vector3.forward * speed;
