@@ -13,8 +13,7 @@ public class player : MonoBehaviour {
 	VRNode rift;
 	void Start () {
 		transform = GetComponent<Transform> ();
-		rift = VRNode.CenterEye;
-		InputTracking.Recenter ();
+
 
 
 	}
@@ -27,7 +26,7 @@ public class player : MonoBehaviour {
 
 			Vector3 move = Vector3.forward * speed;
 			Quaternion input =  InputTracking.GetLocalRotation(rift);
-			transform.rotation = new Quaternion (0f,input.y, input.z, input.w);
+			//transform.rotation = new Quaternion (0f,input.y, input.z, input.w);
 
 			float strafe = speed * 1.25f;
 			strafe = strafe * input.z;
