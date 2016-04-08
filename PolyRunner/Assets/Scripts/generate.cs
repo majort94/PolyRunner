@@ -14,6 +14,8 @@ public class generate : MonoBehaviour {
     private GameObject nextObstacle = null;
     private bool end = false;
     private float spacer = 100f;
+    public GameObject wave3;
+    private int count = 0;
 
 
 	void Start () {
@@ -40,8 +42,8 @@ public class generate : MonoBehaviour {
             nextObstacle = Instantiate(cube, newPos, Quaternion.identity) as GameObject;
             nextObstacle.GetComponent<Transform>().parent = chunk.GetComponent<Transform>();
             index.GetComponent<Transform>().position = new Vector3(index.GetComponent<Transform>().position.x + spacer, 0f, index.GetComponent<Transform>().position.z);
-            //if (index.GetComponent<Transform>().position.x > chunk.GetComponent<BoxCollider>().ClosestPointOnBounds(index.GetComponent<BoxCollider>().bounds.center).x)
-            if(index.GetComponent<Transform>().position.x > GetComponent<Transform>().position.x + 15500f)
+            if (index.GetComponent<Transform>().position.x > chunk.GetComponent<BoxCollider>().ClosestPointOnBounds(index.GetComponent<BoxCollider>().bounds.center).x)
+            // if(index.GetComponent<Transform>().position.x > GetComponent<Transform>().position.x + 15500f)
             {
                 end = true;
             }
@@ -55,8 +57,19 @@ public class generate : MonoBehaviour {
         //Debug.Log(col.gameObject.GetComponent<Transform>().name);
         if (col.gameObject.CompareTag("generator"))
         {
-            generateChunk(col.gameObject);
+            count++;
+            if (count > 10)
+            {
+                wave3.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
+                nextChunk = Instantiate(blankChunk);
+                nextChunk.tag = "generator";
+                nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 3500f);
+                count = 0;
+                return;
+            }
+                generateChunk(col.gameObject);
             end = false;
+
             nextChunk = Instantiate(blankChunk);
             nextChunk.tag = "generator";
             nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 300f);

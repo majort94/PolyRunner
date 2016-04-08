@@ -25,7 +25,7 @@ public class cube : MonoBehaviour {
             {
                 GameObject.Find("/hydroplane/body").GetComponent<MeshRenderer>().material = mat;
                 GameObject.Find("hydroplane").GetComponent<player>().forward = false;
-                GameObject.Find("/hydroplane/body").transform.parent = null;
+                //GameObject.Find("/hydroplane/body").transform.parent = null;
                 hit = true;
             }
         }
