@@ -93,7 +93,7 @@ public class player : MonoBehaviour {
                             rb.velocity = newVelocity;
                             overTilt = false;
                             overTilt2 = false;
-                            Debug.Log("speed change2");
+                           // Debug.Log("speed change2");
                         }
 
                         if (((input.z) > .02f) && ((tiltStamp) < 0f) && overTilt2)
@@ -102,7 +102,7 @@ public class player : MonoBehaviour {
                             rb.velocity = newVelocity;
                             overTilt = false;
                             overTilt2 = false;
-                            Debug.Log("speed change2");
+                        //    Debug.Log("speed change2");
                         }
                     }
                     else
