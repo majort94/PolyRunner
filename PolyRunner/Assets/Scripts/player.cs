@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class player : MonoBehaviour {
 
 	// Use this for initialization
-	private float speed = 250f;
+	private float speed = 225f;
 	public Renderer rend;
 	public Material mat;
 	public bool forward = true;
@@ -74,7 +74,7 @@ public class player : MonoBehaviour {
                             rb.velocity = newVelocity;
                             //overTilt = false;
                             overTilt2 = true;
-                            Debug.Log("speed change1");
+                            //Debug.Log("speed change1");
 
                         }
 
@@ -117,9 +117,10 @@ public class player : MonoBehaviour {
 
                         }
                     }
-                }
-                strafe = input.z * 40f;
+                } //2400
+                strafe = input.z * 2400f * Time.fixedDeltaTime;
                 rb.AddForce(new Vector3(strafe, 0f, 0f), ForceMode.VelocityChange);
+
                 //move += rb.velocity;
                 // rb.velocity = new Vector3(0f, 0f, 0f);
                 //rb.AddForce(Vector3.left * 200f, ForceMode.Impulse);
@@ -132,8 +133,17 @@ public class player : MonoBehaviour {
 
             //transform.Translate(move * Time.fixedDeltaTime);
             GameObject plane = GameObject.Find("/hydroplane/Plane");
-                rb.velocity = new Vector3(rb.velocity.x, 0f, 420f);
-            plane.GetComponent<Renderer>().material.mainTextureOffset = new Vector2(plane.GetComponent<Renderer>().material.mainTextureOffset.x - ((rb.velocity.x + move.x) / 65f * Time.fixedDeltaTime), plane.GetComponent<Renderer>().material.mainTextureOffset.y - ((rb.velocity.z + move.z) / 49f * Time.fixedDeltaTime));
+                rb.velocity = new Vector3(rb.velocity.x, 0f, 400f);
+                if (rb.velocity.x > 400f)
+                {
+                    rb.velocity = new Vector3(400f, 0f, 400f);
+                }
+
+                if (rb.velocity.x < -400f)
+                {
+                    rb.velocity = new Vector3(-400f, 0f, 400f);
+                }
+                plane.GetComponent<Renderer>().material.mainTextureOffset = new Vector2(plane.GetComponent<Renderer>().material.mainTextureOffset.x - ((rb.velocity.x + move.x) / 65f * Time.fixedDeltaTime), plane.GetComponent<Renderer>().material.mainTextureOffset.y - ((rb.velocity.z + move.z) / 49f * Time.fixedDeltaTime));
                 //Debug.Log("velocity " + GetComponent<Rigidbody>().velocity);
 
             }

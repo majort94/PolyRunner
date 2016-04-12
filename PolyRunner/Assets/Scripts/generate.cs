@@ -48,7 +48,6 @@ public class generate : MonoBehaviour {
         GameObject index = chunk.GetComponent<Transform>().Find("index").gameObject;
         while (!end)
         {
-            spacer = 100f;
             Vector3 newPos = index.GetComponent<BoxCollider>().bounds.center;
 
             //newPos.x += UnityEngine.Random.Range(-1 * (spacer /2) + 10f, (spacer / 2) - 10f);
@@ -92,6 +91,7 @@ public class generate : MonoBehaviour {
             case 25:
                 //prog2 = false;
                 //prog3 = true;
+                spacer = 80f;
                 break;
             default:
                 break;
