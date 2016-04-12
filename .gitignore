@@ -25,3 +25,5 @@ ExportedObj/
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 PolyRunner/Library/metadata/
+PolyRunner/Assets/Plugins/x86/OVRGamepad.dll.meta
+PolyRunner/Assets/Plugins/x86_64/OVRGamepad.dll.meta
