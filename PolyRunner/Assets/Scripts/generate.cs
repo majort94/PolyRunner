@@ -16,11 +16,14 @@ public class generate : MonoBehaviour {
     private GameObject nextObstacle = null;
     private bool end = false;
     private float spacer = 100f;
-    public GameObject wave3;
+
     private int count = 0;
 
 
     //generation stuff
+    public GameObject wave3;
+    public GameObject wave4;
+
     Boolean prog1 = false;
     Boolean prog2 = false;
     Boolean prog3 = false;
@@ -67,7 +70,7 @@ public class generate : MonoBehaviour {
             //newPos.x += (prevObstacle.GetComponent<Collider>().bounds.size.x);
             
             GameObject temp = pickObstacle(count);
-            if((forwardSlash || backSlash ) && slashIterator < 5){
+            if((forwardSlash || backSlash ) && slashIterator < 4){
                 temp = prevObstacle;
             }
             index.GetComponent<Transform>().position = new Vector3(index.GetComponent<Transform>().position.x + (prevObstacle.GetComponent<Collider>().bounds.size.x/2 + spacer), 0f, index.GetComponent<Transform>().position.z);
@@ -95,7 +98,7 @@ public class generate : MonoBehaviour {
                 nonSlash = true;
             }
             // if making a slash pattern, else normal random range 
-            if (forwardSlash && slashIterator < 5)
+            if (forwardSlash && slashIterator < 4)
             {
                 //newPos.x += UnityEngine.Random.Range(0f, temp.GetComponent<Collider>().bounds.size.x*10f);
                // newPos.x -= spacer;
@@ -120,11 +123,11 @@ public class generate : MonoBehaviour {
                         break;
                     case 3:
                         newPos.z += UnityEngine.Random.Range(prevZ - 150f, prevZ - 200f);
-                        slashIterator++;
+                      //  slashIterator++;
                         //temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[2];
-                        break;
-                    case 4:
-                        newPos.z += UnityEngine.Random.Range(prevZ - 200f, prevZ - 250f);
+                       // break;
+                   // case 4:
+                       // newPos.z += UnityEngine.Random.Range(prevZ - 200f, prevZ - 250f);
                         //temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[2];
                         slashIterator = 0;
                         forwardSlash = false;
@@ -233,7 +236,7 @@ public class generate : MonoBehaviour {
             case 25:
                 //prog2 = false;
                 //prog3 = true;
-                spacer = 80f;
+                spacer = 70f;
                 break;
             default:
                 break;
@@ -257,6 +260,14 @@ public class generate : MonoBehaviour {
                 {
                     return obstacles[2];
                 }
+                else
+                {
+                    if (rand < 25)
+                    {
+                        return obstacles[3];
+                    }
+                }
+                
             }
         }
 
@@ -270,14 +281,53 @@ public class generate : MonoBehaviour {
         if (col.gameObject.CompareTag("generator"))
         {
             count++;
-            if (count % 200 == 0)
+            GameObject temp;
+           /* if (count % 9999 == 0)
             {
-                wave3.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
+                //wave4.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave4.GetComponent<Transform>().position.y, 0f);
+                wave4.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z +  15300f);
+                
+                for (int i = 0; i < 2; i++)
+                {
+                    //Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) - ((i + 1) * wave4.GetComponent<BoxCollider>().bounds.size.x), wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
+                    Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) - ((i + 1) * wave4.GetComponent<BoxCollider>().bounds.size.x), wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 15300f);
+                    temp = Instantiate(wave4, pos1, Quaternion.identity) as GameObject;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) + ((i + 1) * wave4.GetComponent<BoxCollider>().bounds.size.x), wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 15300f);
+                    temp = Instantiate(wave4, pos1, Quaternion.identity) as GameObject;
+                }
+
                 nextChunk = Instantiate(blankChunk);
                 nextChunk.tag = "generator";
-                nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 3500f);
+                nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z +  wave4.GetComponent<BoxCollider>().bounds.size.z/2);
                 return;
             }
+            else {
+                */
+                if (count % 20 == 0)
+                {
+                    wave3.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
+                    for (int i = 0; i < 2; i++)
+                    {
+                        Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) - ((i + 1) * wave3.GetComponent<BoxCollider>().bounds.size.x), wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
+                        temp = Instantiate(wave3, pos1, Quaternion.identity) as GameObject;
+                    }
+                    for (int i = 0; i < 2; i++)
+                    {
+                        Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) + ((i + 1) * wave3.GetComponent<BoxCollider>().bounds.size.x), wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
+                        temp = Instantiate(wave3, pos1, Quaternion.identity) as GameObject;
+                    }
+
+                    nextChunk = Instantiate(blankChunk);
+                    nextChunk.tag = "generator";
+                    //nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z - 4000f + wave3.GetComponent<BoxCollider>().bounds.size.z/2);
+                    nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 3500f);
+                    return;
+                }
+                
+           // }
                 generateChunk(col.gameObject);
             end = false;
 

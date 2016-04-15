@@ -134,14 +134,14 @@ public class player : MonoBehaviour {
             //transform.Translate(move * Time.fixedDeltaTime);
             GameObject plane = GameObject.Find("/hydroplane/Plane");
                 rb.velocity = new Vector3(rb.velocity.x, 0f, 400f);
-                if (rb.velocity.x > 400f)
+                if (rb.velocity.x > 500f)
                 {
-                    rb.velocity = new Vector3(400f, 0f, 400f);
+                    rb.velocity = new Vector3(500f, 0f, 500f);
                 }
 
-                if (rb.velocity.x < -400f)
+                if (rb.velocity.x < -500f)
                 {
-                    rb.velocity = new Vector3(-400f, 0f, 400f);
+                    rb.velocity = new Vector3(-500f, 0f, 500f);
                 }
                 plane.GetComponent<Renderer>().material.mainTextureOffset = new Vector2(plane.GetComponent<Renderer>().material.mainTextureOffset.x - ((rb.velocity.x + move.x) / 65f * Time.fixedDeltaTime), plane.GetComponent<Renderer>().material.mainTextureOffset.y - ((rb.velocity.z + move.z) / 49f * Time.fixedDeltaTime));
                 //Debug.Log("velocity " + GetComponent<Rigidbody>().velocity);
