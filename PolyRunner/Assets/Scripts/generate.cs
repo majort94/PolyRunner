@@ -27,6 +27,15 @@ public class generate : MonoBehaviour {
     Boolean prog4 = false;
     Boolean prog5 = false;
     Boolean prog6 = false;
+
+    public Material[] mats;
+
+    private Boolean forwardSlash = false;
+    private Boolean backSlash = false;
+    private Boolean nonSlash = true;
+    private float prevZ;
+    private int slashIterator = 0;
+
     public GameObject[] obstacles;
 
 	void Start () {
@@ -48,15 +57,148 @@ public class generate : MonoBehaviour {
         GameObject index = chunk.GetComponent<Transform>().Find("index").gameObject;
         while (!end)
         {
-            Vector3 newPos = index.GetComponent<BoxCollider>().bounds.center;
+            int rand = 0;
+            rand = (int)UnityEngine.Random.Range(0f, 100f);
+
+            
 
             //newPos.x += UnityEngine.Random.Range(-1 * (spacer /2) + 10f, (spacer / 2) - 10f);
             //newPos.x += UnityEngine.Random.Range(-1 * (prevObstacle.GetComponent<Collider>().bounds.size.x), (prevObstacle.GetComponent<Collider>().bounds.size.x));
             //newPos.x += (prevObstacle.GetComponent<Collider>().bounds.size.x);
-            newPos.z += UnityEngine.Random.Range(-150f, 150f);
+            
             GameObject temp = pickObstacle(count);
-            index.GetComponent<Transform>().position = new Vector3(index.GetComponent<Transform>().position.x + prevObstacle.GetComponent<Collider>().bounds.size.x + spacer, 0f, index.GetComponent<Transform>().position.z);
-            newPos.x += UnityEngine.Random.Range(0f, temp.GetComponent<Collider>().bounds.size.x * 2);
+            if((forwardSlash || backSlash ) && slashIterator < 5){
+                temp = prevObstacle;
+            }
+            index.GetComponent<Transform>().position = new Vector3(index.GetComponent<Transform>().position.x + (prevObstacle.GetComponent<Collider>().bounds.size.x/2 + spacer), 0f, index.GetComponent<Transform>().position.z);
+
+            if (forwardSlash || backSlash)
+            {
+                index.GetComponent<Transform>().position = new Vector3(index.GetComponent<Transform>().position.x - (spacer/2) + (temp.GetComponent<Collider>().bounds.size.x / 2), 0f, index.GetComponent<Transform>().position.z);
+            }
+            Vector3 newPos = index.GetComponent<BoxCollider>().bounds.center;
+
+            //GameObject temp2 = Instantiate(temp, index.GetComponent<Transform>().position, Quaternion.identity) as GameObject;
+            //temp2.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[4];
+
+            if (!backSlash && !forwardSlash && (rand < 10))
+            {
+                forwardSlash = true;
+            }
+            if (!forwardSlash && !backSlash && (rand > 10) && (rand < 20))
+            {
+                backSlash = true;
+            }
+
+            if (!nonSlash)
+            {
+                nonSlash = true;
+            }
+            // if making a slash pattern, else normal random range 
+            if (forwardSlash && slashIterator < 5)
+            {
+                //newPos.x += UnityEngine.Random.Range(0f, temp.GetComponent<Collider>().bounds.size.x*10f);
+               // newPos.x -= spacer;
+                //Debug.Log("forwardSlash");
+                switch (slashIterator)
+                {
+                    case 0:
+                        prevZ = UnityEngine.Random.Range(-150f, 150f);
+                        newPos.z += prevZ;
+                        //temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[0];
+                        slashIterator++;
+                        break;
+                    case 1:
+                        newPos.z += UnityEngine.Random.Range(prevZ - 50f, prevZ - 100f);
+                        // temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[1];
+                        slashIterator++;
+                        break;
+                    case 2:
+                        newPos.z += UnityEngine.Random.Range(prevZ - 100f, prevZ - 150f);
+                        slashIterator++;
+                        //temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[2];
+                        break;
+                    case 3:
+                        newPos.z += UnityEngine.Random.Range(prevZ - 150f, prevZ - 200f);
+                        slashIterator++;
+                        //temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[2];
+                        break;
+                    case 4:
+                        newPos.z += UnityEngine.Random.Range(prevZ - 200f, prevZ - 250f);
+                        //temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[2];
+                        slashIterator = 0;
+                        forwardSlash = false;
+                        backSlash = false;
+                        nonSlash = false;
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+ 
+                if (backSlash && slashIterator < 5)
+                {
+                   // newPos.x += UnityEngine.Random.Range(0f, temp.GetComponent<Collider>().bounds.size.x * 10f);
+                    //newPos.x -= spacer;
+                    //Debug.Log("backSlash");
+                    switch (slashIterator)
+                    {
+                        case 0:
+                        prevZ = UnityEngine.Random.Range(-150f, 150f);
+                        newPos.z += prevZ;
+                        //temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[0];
+                        slashIterator++;
+                            break;
+                        case 1:
+                            newPos.z += UnityEngine.Random.Range(prevZ + 50f, prevZ + 100f);
+                            //temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[1];
+                            slashIterator++;
+                            break;
+                    case 2:
+                        newPos.z += UnityEngine.Random.Range(prevZ + 100f, prevZ + 150f);
+                        slashIterator++;
+                        // temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[2];
+                        break;
+                    case 3:
+                        newPos.z += UnityEngine.Random.Range(prevZ + 150f, prevZ + 200f);
+                        slashIterator++;
+                        // temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[2];
+                        break;
+                    case 4:
+                        newPos.z += UnityEngine.Random.Range(prevZ + 200f, prevZ + 250f);
+                        // temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[2];
+                        slashIterator = 0;
+                        forwardSlash = false;
+                        backSlash = false;
+                        nonSlash = false;
+                        break;
+                    default:
+                            break;
+                    }
+                }
+
+                /*else
+                {
+
+                    //temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[3];
+                    //temp2.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[3];
+                    slashIterator = 0;
+                    forwardSlash = false;
+                    backSlash = false;
+                    //Debug.Log("here");
+                }
+                */
+    
+            if (!forwardSlash && !backSlash && nonSlash)
+            {
+                newPos.z += UnityEngine.Random.Range(-150f, 150f);
+                newPos.x += UnityEngine.Random.Range(-.9f * spacer, spacer);
+                //temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[4];
+            }
+            //newPos.z += UnityEngine.Random.Range(-150f, 150f);
+            //newPos.x += UnityEngine.Random.Range(0f, temp.GetComponent<Collider>().bounds.size.x * 2);
+            //index.GetComponent<Transform>().position = new Vector3(newPos.x, 0f, index.GetComponent<Transform>().position.z);
             prevObstacle = temp;
             nextObstacle = Instantiate(temp, newPos, Quaternion.identity) as GameObject;
             nextObstacle.GetComponent<Transform>().parent = chunk.GetComponent<Transform>(); 
@@ -128,7 +270,7 @@ public class generate : MonoBehaviour {
         if (col.gameObject.CompareTag("generator"))
         {
             count++;
-            if (count % 20 == 0)
+            if (count % 200 == 0)
             {
                 wave3.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
                 nextChunk = Instantiate(blankChunk);
