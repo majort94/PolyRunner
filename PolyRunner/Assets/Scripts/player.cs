@@ -118,7 +118,7 @@ public class player : MonoBehaviour {
                         }
                     }
                 } //2400
-                strafe = input.z * 2400f * Time.fixedDeltaTime;
+                strafe = input.z * 2200f * Time.fixedDeltaTime;
                 rb.AddForce(new Vector3(strafe, 0f, 0f), ForceMode.VelocityChange);
 
                 //move += rb.velocity;

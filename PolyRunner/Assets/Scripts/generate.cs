@@ -196,7 +196,7 @@ public class generate : MonoBehaviour {
             if (!forwardSlash && !backSlash && nonSlash)
             {
                 newPos.z += UnityEngine.Random.Range(-150f, 150f);
-                newPos.x += UnityEngine.Random.Range(-.9f * spacer, spacer);
+                newPos.x += UnityEngine.Random.Range(-.9f * spacer,  spacer);
                 //temp.GetComponent<Transform>().Find("polySurface1").GetComponent<MeshRenderer>().material = mats[4];
             }
             //newPos.z += UnityEngine.Random.Range(-150f, 150f);
