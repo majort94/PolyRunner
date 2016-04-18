@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Wave3.unity
+- path: Assets/NiaTester.unity
   isLoaded: 1
   isActive: 1
