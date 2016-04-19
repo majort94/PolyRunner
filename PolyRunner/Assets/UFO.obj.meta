@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: 08eb4a29a91bd3b489542bddc7ca1e47
+<<<<<<< HEAD
 timeCreated: 1461024030
+=======
+timeCreated: 1461021447
+>>>>>>> TryThisOne
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
