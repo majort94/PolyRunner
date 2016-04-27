@@ -14,7 +14,7 @@ public class MountainScript : MonoBehaviour {
 		{
 			fireballs[i] = (GameObject)Instantiate(Resources.Load("fireballPrefab"), new Vector3(1600, -20.0f, 1268 + (i + 10)), Quaternion.identity);
 			fireballs[i].name = "Fireball " + i;
-			rigibody = fireballs[i].GetComponent<Rigidbody>();
+			rigibody[i] = fireballs[i].GetComponent<Rigidbody>();
 		}
 	}
 	
