@@ -26,9 +26,18 @@ public class RollingRock : MonoBehaviour {
     
     void Update()
     {
-        if (GetComponent<Collider>().bounds.center.z < (GameObject.Find("/hydroplane/Plane").GetComponent<Collider>().ClosestPointOnBounds(GetComponent<Collider>().bounds.center).z)) {
-            Debug.Log("cleanup:");
-            Destroy(this);
+        if (GetComponent<Collider>().bounds.center.z + 1 < (GameObject.Find("/hydroplane/Plane").GetComponent<Collider>().ClosestPointOnBounds(GetComponent<Collider>().bounds.center).z))
+        {
+            Destroy(gameObject);
+        }
+        if (GetComponent<Collider>().bounds.center.x + 1 < (GameObject.Find("/hydroplane/Plane").GetComponent<Collider>().ClosestPointOnBounds(GetComponent<Collider>().bounds.center).x))
+        {
+            Destroy(gameObject);
+        }
+
+        if (GetComponent<Collider>().bounds.center.x - 1 > (GameObject.Find("/hydroplane/Plane").GetComponent<Collider>().ClosestPointOnBounds(GetComponent<Collider>().bounds.center).x))
+        {
+            Destroy(gameObject);
         }
     }	
 }
