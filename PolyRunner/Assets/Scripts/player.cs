@@ -29,6 +29,8 @@ public class player : MonoBehaviour {
     public Material gameOverMat;
 
     Rigidbody rb;
+
+
 	void Start () {
         rb = GetComponent<Rigidbody>();
 	}
