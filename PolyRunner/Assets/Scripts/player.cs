@@ -26,6 +26,8 @@ public class player : MonoBehaviour {
     private bool overTilt2 = false;
     private float tiltStamp = 0f;
 
+    public Material gameOverMat;
+
     Rigidbody rb;
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -166,6 +168,20 @@ public class player : MonoBehaviour {
 
     }
 
-	}
+	} // end fixed Update
 
-}
+    void OnTriggerEnter(Collider col)
+    {
+        //if (col.gameObject.CompareTag("obstacles"))
+       // {
+            //if (!hit)
+            // {
+            transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
+            forward = false;
+            //GameObject.Find("/hydroplane/body").transform.parent = null;
+            //   hit = true;
+            // }
+      //  }
+    }
+
+    }

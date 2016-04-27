@@ -22,5 +22,13 @@ public class RollingRock : MonoBehaviour {
 		//Debug.Log("Z: " + rand3);
 		this.GetComponent<Rigidbody>().AddForce( new Vector3(rand1, 0.0f, rand3));
 	
-	}		
+	}	
+    
+    void Update()
+    {
+        if (GetComponent<Collider>().bounds.center.z < (GameObject.Find("/hydroplane/Plane").GetComponent<Collider>().ClosestPointOnBounds(GetComponent<Collider>().bounds.center).z)) {
+            Debug.Log("cleanup:");
+            Destroy(this);
+        }
+    }	
 }
