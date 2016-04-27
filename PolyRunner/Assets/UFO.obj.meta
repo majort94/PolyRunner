@@ -1,11 +1,5 @@
 fileFormatVersion: 2
 guid: 08eb4a29a91bd3b489542bddc7ca1e47
-<<<<<<< HEAD
-timeCreated: 1461024030
-=======
-timeCreated: 1461021447
->>>>>>> TryThisOne
-licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -41,6 +35,7 @@ ModelImporter:
     4300006: UFO_Tube_down
     4300008: UFO_Tube_down_Cube
     4300010: UFO_White_light_on_top
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -65,7 +60,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -99,7 +94,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
