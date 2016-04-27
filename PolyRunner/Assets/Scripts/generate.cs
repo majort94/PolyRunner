@@ -306,7 +306,7 @@ public class generate : MonoBehaviour {
             }
             else {
                 */
-                if (count % 20 == 0)
+                if (count % 30 == 0)
                 {
                     wave3.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
                     for (int i = 0; i < 2; i++)
