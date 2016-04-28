@@ -8,16 +8,17 @@ public class Movement : MonoBehaviour {
 	Vector3 EndPos;
 	Vector3 currentPos;
 	GameObject currentRam;
+	public float speed;
 	bool cycle;
 	// Use this for initialization
 	void Start () {
 		currentRam = null;
 		//cycle = false;
-		rams = new GameObject[4];
+		rams = new GameObject[2];
 		rams[0] = GameObject.Find("satansram");
 		rams[1] = GameObject.Find("satansram (1)");
-		rams[2] = GameObject.Find("satansram (2)");
-		rams[3] = GameObject.Find("satansram (3)");
+		/*rams[2] = GameObject.Find("satansram (2)");
+		rams[3] = GameObject.Find("satansram (3)");*/
 		//EndPos = this.transform.position;
 	}
 
@@ -25,7 +26,7 @@ public class Movement : MonoBehaviour {
 	void Update () {
 		if(currentRam == null)
 		{
-			int r = Random.Range(0,4);
+			int r = Random.Range(0,2);
 			currentRam = rams[r];
 			beginPos = currentRam.transform.position;
 			currentPos = beginPos;
@@ -52,7 +53,7 @@ public class Movement : MonoBehaviour {
 
 	Vector3 moveToward(Vector3 bp, Vector3 tp)
 	{
-		int speed = 1;
+		speed = 2.0f;
 		Vector3 dir = tp - bp;
 		dir.Normalize();
 		dir = dir * speed;

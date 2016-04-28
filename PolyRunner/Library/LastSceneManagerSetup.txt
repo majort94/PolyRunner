@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/NiaTester.unity
+- path: Assets/NiaTester2.unity
   isLoaded: 1
   isActive: 1
