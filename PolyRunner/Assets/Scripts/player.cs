@@ -32,6 +32,9 @@ public class player : MonoBehaviour {
 
     Rigidbody rb;
 
+    private float deathPause;
+    private bool firstHit = false;
+
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -124,7 +127,7 @@ public class player : MonoBehaviour {
                         }
                     }
                 } //2400
-                strafe = input.z * 2200f * Time.fixedDeltaTime;
+                strafe = input.z * 2000f * Time.fixedDeltaTime;
                 rb.AddForce(new Vector3(strafe, 0f, 0f), ForceMode.VelocityChange);
 
                 //move += rb.velocity;
@@ -180,15 +183,35 @@ public class player : MonoBehaviour {
         // {
         //if (!hit)
         // {
-        if(GameObject.Find("GameManager").GetComponent<stats>().count > 3)
+
+        if (col.gameObject.layer == 12)
         {
-            transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
-            
-            Instantiate(health);
+            //Debug.Log("health");
+            col.gameObject.GetComponent<fuel>().activate();
+            firstHit = false;
+            return;
+        }
+
+        if(GameObject.Find("GameManager").GetComponent<stats>().count > 2)
+        {
+            if (firstHit && (Time.time > (deathPause + .2f)))
+            {
+                forward = false;
+                GetComponent<fuelTimer>().start = true;
+                return;
+
+            }
+                firstHit = true;
+                deathPause = Time.time;
+                transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
+                GetComponent<fuelTimer>().start = true;
+                Instantiate(health);
+                Instantiate(health);
         }
         else
         {
             forward = false;
+            transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
         }
 
         //GameObject.Find("/hydroplane/body").transform.parent = null;

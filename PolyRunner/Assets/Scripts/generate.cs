@@ -17,12 +17,14 @@ public class generate : MonoBehaviour {
     private bool end = false;
     private float spacer = 100f;
 
+    public GameObject[] waves;
+
     public int count = 0;
 
 
     //generation stuff
-    public GameObject wave3;
-    public GameObject wave4;
+    //public GameObject wave3;
+    //public GameObject wave4;
 
     Boolean prog1 = false;
     Boolean prog2 = false;
@@ -280,6 +282,7 @@ public class generate : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
         //Debug.Log(col.gameObject.GetComponent<Transform>().name);
+        GameObject wave;
         if (col.gameObject.CompareTag("generator"))
         {
             count++;
@@ -308,9 +311,11 @@ public class generate : MonoBehaviour {
             }
             else {
                 */
-                if (count % 30 == 0)
+                if (count % 10 == 0)
                 {
-                    wave3.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
+                    wave = waves[1];
+                    wave.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x - 100f, wave.GetComponent<Transform>().position.y, GetComponent<Transform>().position.z + 18200f);
+                    /*
                     for (int i = 0; i < 2; i++)
                     {
                         Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) - ((i + 1) * wave3.GetComponent<BoxCollider>().bounds.size.x), wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
@@ -321,6 +326,8 @@ public class generate : MonoBehaviour {
                         Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) + ((i + 1) * wave3.GetComponent<BoxCollider>().bounds.size.x), wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
                         temp = Instantiate(wave3, pos1, Quaternion.identity) as GameObject;
                     }
+
+                    */
 
                     nextChunk = Instantiate(blankChunk);
                     nextChunk.tag = "generator";

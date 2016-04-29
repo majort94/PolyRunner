@@ -11,6 +11,8 @@ public class fuelTimer : MonoBehaviour {
     public float fuelBarScale = 1;
     float lastTime;
     public Material gameOverMat;
+    public bool start = false;
+    private bool norm = false;
 
 	// Use this for initialization
 	void Start () {
@@ -18,18 +20,36 @@ public class fuelTimer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (goingDown && Time.time > lastTime + 0.5f)
+        if (start)
         {
-            fuelBarScale = fuelBarScale - 0.0005f;
-            fuelBar.transform.localScale = new Vector3(fuelBarScale, fuelBar.transform.localScale.y, fuelBar.transform.localScale.z);
-            fuelText.text = "Fuel: " + (int)(fuelBarScale * 100) + "%";
-        }
+            norm = false;
+            if (goingDown && Time.time > lastTime + 0.08f)
+            {
+                fuelBarScale = fuelBarScale - 0.01f;
+                fuelBar.transform.localScale = new Vector3(fuelBarScale, fuelBar.transform.localScale.y, fuelBar.transform.localScale.z);
+                fuelText.text = "Fuel: " + (int)(fuelBarScale * 100) + "%";
+                lastTime = Time.time;
+            }
 
-        if (fuelBarScale <= 0)
+            if (fuelBarScale <= 0)
+            {
+                //playerRef.transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
+                playerRef.GetComponent<player>().forward = false;
+                goingDown = false;
+            }
+
+        }
+        else
         {
-            playerRef.transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
-            playerRef.GetComponent<player>().forward = false;
-            goingDown = false;
+            if (!norm)
+            {
+                norm = true;
+                fuelBar.transform.localScale = new Vector3(1f, fuelBar.transform.localScale.y, fuelBar.transform.localScale.z);
+                playerRef.transform.Find("body").GetComponent<MeshRenderer>().material = GetComponent<player>().mat;
+                fuelBarScale = 1;
+                fuelText.text = "Fuel: " + (int)(fuelBarScale * 100) + "%";
+            }
+
         }
 	}
 

@@ -8,20 +8,36 @@ public class fuel : MonoBehaviour {
     private GameObject player;
     private bool onHit = false;
     private bool left = false;
+
+    private int id;
+    private static int idInc = 0;
 	// Use this for initialization
 	void Start () {
+
+        id = idInc++;
         count = GameObject.Find("GameManager").GetComponent<stats>().count;
         player = GameObject.Find("hydroplane");
 
-        transform.position = new Vector3(player.GetComponent<Collider>().bounds.center.x, 5f, GameObject.Find("chunk" + (count - 2).ToString()).GetComponent<Collider>().bounds.center.z);
+        transform.position = new Vector3(player.GetComponent<Collider>().bounds.center.x + 50f, 5f, GameObject.Find("chunk" + (count - 3).ToString()).GetComponent<Collider>().bounds.center.z);
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, 500f, 11);
+        if(id == 1)
+        {
+            transform.position = new Vector3(transform.position.x - 100f, 5f, transform.position.z);
+        }
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, 300f);
+        //Debug.Log("hitsSize " + hits.Length);
         GameObject closestObject = null;
         GameObject obj;
         for (int i = 0; i < hits.Length; i++)
         {
             
             obj = hits[i].gameObject;
+            if ((obj.layer == 8) ||(obj.layer == 12))
+            {
+                continue;
+            }
+
             if (closestObject == null)
             {
                 closestObject = obj;
@@ -48,9 +64,9 @@ public class fuel : MonoBehaviour {
         {
             newPos.x -= GetComponent<Collider>().bounds.size.x;
         }
-        Debug.Log("trasnform before2 " + transform.position);
+        //Debug.Log("trasnform before2 " + transform.position);
         transform.position = newPos;
-        Debug.Log("trasnform after " + transform.position);
+        //Debug.Log("trasnform after " + transform.position);
         /*GameObject[] objectsWithTag = GameObject.Find("chunk" + (count - 1).ToString()).transform.gameObject.FindGameObjectsWithTag(tag);
         GameObject closestObject = null;
         for (int i = 0; i < objectsWithTag.Length; i++)
@@ -91,7 +107,13 @@ public class fuel : MonoBehaviour {
         
     }
 
-    void onCollisionEnter(Collision col)
+
+    public void activate()
+    {
+            //Debug.Log("hit2");
+            GameObject.Find("hydroplane").GetComponent<fuelTimer>().start = false;
+    }
+    void onColliderEnter(Collision col)
     {
         /*
         if (onHit == false)
@@ -112,9 +134,12 @@ public class fuel : MonoBehaviour {
         else
         {
         */
-            if (col.gameObject.CompareTag("player"))
+        Debug.Log("hit");
+        if (col.gameObject.CompareTag("player"))
             {
-                Debug.Log("yes");
+            Debug.Log("hit2");
+            GameObject.Find("hydroplane").GetComponent<fuelTimer>().start = false;
+                 Destroy(gameObject);
             }
        // }
 
