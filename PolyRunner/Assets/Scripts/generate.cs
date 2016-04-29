@@ -17,7 +17,7 @@ public class generate : MonoBehaviour {
     private bool end = false;
     private float spacer = 100f;
 
-    private int count = 0;
+    public int count = 0;
 
 
     //generation stuff
@@ -40,6 +40,7 @@ public class generate : MonoBehaviour {
     private int slashIterator = 0;
 
     public GameObject[] obstacles;
+
 
 	void Start () {
         blankChunk = Instantiate(prevChunk);
@@ -266,6 +267,7 @@ public class generate : MonoBehaviour {
                     {
                         return obstacles[3];
                     }
+
                 }
                 
             }
@@ -333,7 +335,11 @@ public class generate : MonoBehaviour {
 
             nextChunk = Instantiate(blankChunk);
             nextChunk.tag = "generator";
+            nextChunk.name = "chunk" + count.ToString();
             nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 300f);
+
+            GameObject.Find("GameManager").GetComponent<stats>().count = count;
+            
         }
     }
 

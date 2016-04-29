@@ -28,6 +28,8 @@ public class player : MonoBehaviour {
 
     public Material gameOverMat;
 
+    public GameObject health;
+
     Rigidbody rb;
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -173,15 +175,24 @@ public class player : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
         //if (col.gameObject.CompareTag("obstacles"))
-       // {
-            //if (!hit)
-            // {
+        // {
+        //if (!hit)
+        // {
+        if(GameObject.Find("GameManager").GetComponent<stats>().count > 3)
+        {
             transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
+            
+            Instantiate(health);
+        }
+        else
+        {
             forward = false;
-            //GameObject.Find("/hydroplane/body").transform.parent = null;
-            //   hit = true;
-            // }
-      //  }
+        }
+
+        //GameObject.Find("/hydroplane/body").transform.parent = null;
+        //   hit = true;
+        // }
+        //  }
     }
 
     }
