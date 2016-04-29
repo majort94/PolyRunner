@@ -8,7 +8,7 @@ public class fuelTimer : MonoBehaviour {
     public GameObject fuelBar;
     public Text fuelText;
     bool goingDown = true;
-    float fuelBarScale = 1;
+    public float fuelBarScale = 1;
     float lastTime;
     public Material gameOverMat;
 
@@ -29,7 +29,7 @@ public class fuelTimer : MonoBehaviour {
         {
             playerRef.transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
             playerRef.GetComponent<player>().forward = false;
-            goingDown = 0;
+            goingDown = false;
         }
 	}
 
