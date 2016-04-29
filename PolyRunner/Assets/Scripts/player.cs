@@ -31,6 +31,8 @@ public class player : MonoBehaviour {
     public GameObject health;
 
     Rigidbody rb;
+
+
 	void Start () {
         rb = GetComponent<Rigidbody>();
 	}
