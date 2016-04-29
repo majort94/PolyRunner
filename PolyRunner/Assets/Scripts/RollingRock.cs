@@ -8,6 +8,9 @@ public class RollingRock : MonoBehaviour {
     
     // Use this for initialization
 	void Start () {
+
+        transform.position = new Vector3(transform.position.x, 10f, transform.position.z);
+        transform.localScale = new Vector3(.1f, .1f, .1f);
 		//Random float for x
 		float rand1 = Random.Range(1000, 2000);
 		//changes between negative and positive number
