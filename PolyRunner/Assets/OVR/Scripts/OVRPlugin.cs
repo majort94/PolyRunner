@@ -30,7 +30,7 @@ using System.Runtime.InteropServices;
 
 internal static class OVRPlugin
 {
-	public static readonly System.Version wrapperVersion = new System.Version(1, 3, 0);
+	public static readonly System.Version wrapperVersion = new System.Version(1, 3, 2);
 
 	private static System.Version _version;
 	public static System.Version version
@@ -234,6 +234,7 @@ internal static class OVRPlugin
 		HasVrFocus,
 		ShouldQuit,
 		ShouldRecenter,
+		ShouldRecreateDistortionWindow,
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -617,6 +618,11 @@ internal static class OVRPlugin
 	{
 		get { return OVRP_0_1_0.ovrp_GetFloat(Key.VirtualTextureScale); }
 		set { OVRP_0_1_0.ovrp_SetFloat(Key.VirtualTextureScale, value); }
+	}
+
+	public static bool shouldRecreateDistortionWindow
+	{
+		get { return GetStatus(Status.ShouldRecreateDistortionWindow); }
 	}
 #endif
 

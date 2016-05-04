@@ -57,11 +57,6 @@ public class OVRManager : MonoBehaviour
 	/// </summary>
 	public static OVRTracker tracker { get; private set; }
 
-	/// <summary>
-	/// Gets a reference to the active OVRInput.
-	/// </summary>
-	public static OVRInput input { get; private set; }
-
 	private static bool _profileIsCached = false;
 	private static OVRProfile _profile;
 	/// <summary>
@@ -473,6 +468,11 @@ public class OVRManager : MonoBehaviour
 	[HideInInspector]
 	internal static bool runInBackground = false;
 
+	[NonSerialized]
+	private static OVRVolumeControl volumeController = null;
+	[NonSerialized]
+	private Transform volumeControllerTransform = null;
+
 #region Unity Messages
 
 	private void Awake()
@@ -519,12 +519,12 @@ public class OVRManager : MonoBehaviour
         chromatic = false;
 #endif
 
+        InitVolumeController();
+
 		if (display == null)
 			display = new OVRDisplay();
 		if (tracker == null)
 			tracker = new OVRTracker();
-		if (input == null)
-			input = new OVRInput();
 
 		if (resetTrackerOnLoad)
 			display.RecenterPose();
@@ -534,6 +534,14 @@ public class OVRManager : MonoBehaviour
 
 		OVRPlugin.ignoreVrFocus = runInBackground;
 	}
+
+	private void OnEnable()
+	{
+		if (volumeController != null)
+		{
+			volumeController.UpdatePosition(volumeControllerTransform);
+		}
+    }
 
 	private void Update()
 	{
@@ -718,8 +726,41 @@ public class OVRManager : MonoBehaviour
 		_wasHSWDisplayed = isHSWDisplayed;
 
 		display.Update();
-		input.Update();
+		OVRInput.Update();
+		
+		if (volumeController != null)
+		{
+			if (volumeControllerTransform == null)
+			{
+				if (gameObject.GetComponent<OVRCameraRig>() != null)
+				{
+					volumeControllerTransform = gameObject.GetComponent<OVRCameraRig>().centerEyeAnchor;
+				}
+			}
+			volumeController.UpdatePosition(volumeControllerTransform);
+		}
     }
+
+	/// <summary>
+	/// Creates a popup dialog that shows when volume changes.
+	/// </summary>
+	private static void InitVolumeController()
+	{
+		if (volumeController == null)
+		{
+			Debug.Log("Creating volume controller...");
+			// Create the volume control popup
+			GameObject go = GameObject.Instantiate(Resources.Load("OVRVolumeController")) as GameObject;
+			if (go != null)
+			{
+				volumeController = go.GetComponent<OVRVolumeControl>();
+			}
+			else
+			{
+				Debug.LogError("Unable to instantiate volume controller");
+			}
+		}
+	}
 
 	/// <summary>
 	/// Leaves the application/game and returns to the launcher/dashboard

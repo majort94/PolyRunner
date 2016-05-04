@@ -184,16 +184,17 @@ public class player : MonoBehaviour {
         //if (!hit)
         // {
 
-        if (col.gameObject.layer == 12)
-        {
-            //Debug.Log("health");
-            col.gameObject.GetComponent<fuel>().activate();
-            firstHit = false;
-            return;
-        }
 
-        if(GameObject.Find("GameManager").GetComponent<stats>().count > 2)
+
+        if(GameObject.Find("GameManager").GetComponent<stats>().count > 3)
         {
+            if (col.gameObject.layer == 12)
+            {
+                //Debug.Log("health");
+                col.gameObject.GetComponent<fuel>().activate();
+                firstHit = false;
+                return;
+            }
             if (firstHit && (Time.time > (deathPause + .2f)))
             {
                 forward = false;
