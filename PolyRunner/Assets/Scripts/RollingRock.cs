@@ -57,12 +57,12 @@ public class RollingRock : MonoBehaviour {
             if (GetComponent<Collider>().bounds.center.z < (GameObject.Find("/hydroplane/Plane").GetComponent<Collider>().ClosestPointOnBounds(GetComponent<Collider>().bounds.center + new Vector3(0f, 0f, 5f)).z ) && (GetComponent<Collider>().bounds.center.z > (GameObject.Find("/hydroplane").transform.position.z)))
             {
                 start = true;
-                float rand1 = Random.Range(1000, 2000);
+                float rand1 = Random.Range(3000, 5000);
                 //changes between negative and positive number
                 float rand2 = Random.Range(0, 2);
                 if (rand2 == 0) { rand1 *= -1; }
                 //random float for z 
-                float rand3 = Random.Range(1000, 2000);
+                float rand3 = Random.Range(3000, 5000);
                 //changes between negative and positive number
                 float rand4 = Random.Range(0, 2);
                 if (rand4 == 0) { rand3 *= -1; }

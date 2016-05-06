@@ -43,6 +43,7 @@ public class generate : MonoBehaviour {
     private int waveStart = 10;
 
     public GameObject[] obstacles;
+    public GameObject[] trees;
 
 
 	void Start () {
@@ -359,6 +360,7 @@ public class generate : MonoBehaviour {
             if(count == waveStart)
             {
                 int pick = (int)UnityEngine.Random.Range(0f, waves.Length);
+                pick = 3;
                 wave = waves[pick];
 
                 Vector3 newPos = new Vector3();
@@ -369,7 +371,7 @@ public class generate : MonoBehaviour {
                 switch (pick)
                 {
                     case 0:
-                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x + 400f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 4000f);
+                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x + 400f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 7000f);
                         nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 3500f);
                         break;
 
@@ -384,7 +386,7 @@ public class generate : MonoBehaviour {
                         break;
 
                     case 3:
-                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 1000f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 11900f);
+                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 1000f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 7900f);
                         nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 6100f);
                         break;
                     default:
