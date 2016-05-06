@@ -19,6 +19,7 @@ public class cube : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider col){
+        /*
         if (col.gameObject == GameObject.Find("hydroplane"))
         {
             if (!hit)
@@ -29,6 +30,8 @@ public class cube : MonoBehaviour {
                 hit = true;
             }
         }
+        */
 	}
+    
 
 }

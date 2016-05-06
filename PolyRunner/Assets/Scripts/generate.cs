@@ -40,6 +40,7 @@ public class generate : MonoBehaviour {
     private Boolean nonSlash = true;
     private float prevZ;
     private int slashIterator = 0;
+    private int waveStart = 10;
 
     public GameObject[] obstacles;
 
@@ -287,54 +288,117 @@ public class generate : MonoBehaviour {
         {
             count++;
             GameObject temp;
-           /* if (count % 9999 == 0)
-            {
-                //wave4.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave4.GetComponent<Transform>().position.y, 0f);
-                wave4.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z +  15300f);
+            /* if (count % 9999 == 0)
+             {
+                 //wave4.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave4.GetComponent<Transform>().position.y, 0f);
+                 wave4.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + 400f, wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z +  15300f);
+
+                 for (int i = 0; i < 2; i++)
+                 {
+                     //Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) - ((i + 1) * wave4.GetComponent<BoxCollider>().bounds.size.x), wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
+                     Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) - ((i + 1) * wave4.GetComponent<BoxCollider>().bounds.size.x), wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 15300f);
+                     temp = Instantiate(wave4, pos1, Quaternion.identity) as GameObject;
+                 }
+                 for (int i = 0; i < 2; i++)
+                 {
+                     Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) + ((i + 1) * wave4.GetComponent<BoxCollider>().bounds.size.x), wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 15300f);
+                     temp = Instantiate(wave4, pos1, Quaternion.identity) as GameObject;
+                 }
+
+                 nextChunk = Instantiate(blankChunk);
+                 nextChunk.tag = "generator";
+                 nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z +  wave4.GetComponent<BoxCollider>().bounds.size.z/2);
+                 return;
+             }
+             else {
+
+             wave4 wave.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 100f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 18200f);
+            nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 5500f);
+
+            wave 5
+            wave.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 100f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 11900f);
+            nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 10000f);
+
+            wave 6
+              Vector3 newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 1000f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 7900f);
+              nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 6100f);
+            
+            wave3  nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 3500f);
+                + 400f) + ((i + 1) * wave3.GetComponent<BoxCollider>().bounds.size.x), wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
+                 
+            if (count % 8 == 0)
+                {
+                    wave = waves[3];
+               
+                Vector3 newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 1000f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 7900f);
+                GameObject newWave = Instantiate(wave, newPos, Quaternion.identity) as GameObject;
+                
                 
                 for (int i = 0; i < 2; i++)
                 {
-                    //Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) - ((i + 1) * wave4.GetComponent<BoxCollider>().bounds.size.x), wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
-                    Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) - ((i + 1) * wave4.GetComponent<BoxCollider>().bounds.size.x), wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 15300f);
-                    temp = Instantiate(wave4, pos1, Quaternion.identity) as GameObject;
+                    Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) - ((i + 1) * wave3.GetComponent<BoxCollider>().bounds.size.x), wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
+                    temp = Instantiate(wave3, pos1, Quaternion.identity) as GameObject;
                 }
                 for (int i = 0; i < 2; i++)
                 {
-                    Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) + ((i + 1) * wave4.GetComponent<BoxCollider>().bounds.size.x), wave4.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 15300f);
-                    temp = Instantiate(wave4, pos1, Quaternion.identity) as GameObject;
+                    Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) + ((i + 1) * wave3.GetComponent<BoxCollider>().bounds.size.x), wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
+                    temp = Instantiate(wave3, pos1, Quaternion.identity) as GameObject;
                 }
+
+                
+
+                nextChunk = Instantiate(blankChunk);
+                    nextChunk.tag = "generator";
+                    //nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z - 4000f + wave3.GetComponent<BoxCollider>().bounds.size.z/2);
+                    nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 6100f);
+                    return;
+                }
+
+        */
+
+            if(count == waveStart)
+            {
+                int pick = (int)UnityEngine.Random.Range(0f, waves.Length);
+                wave = waves[pick];
+
+                Vector3 newPos = new Vector3();
 
                 nextChunk = Instantiate(blankChunk);
                 nextChunk.tag = "generator";
-                nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z +  wave4.GetComponent<BoxCollider>().bounds.size.z/2);
+
+                switch (pick)
+                {
+                    case 0:
+                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x + 400f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 4000f);
+                        nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 3500f);
+                        break;
+
+                    case 1:
+                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 100f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 18200f);
+                        nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 5500f);
+                        break;
+
+                    case 2:
+                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 100f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 11900f);
+                        nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 10000);
+                        break;
+
+                    case 3:
+                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 1000f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 11900f);
+                        nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 6100f);
+                        break;
+                    default:
+                        break;
+
+                }
+
+
+
+
+                GameObject newWave = Instantiate(wave, newPos, Quaternion.identity) as GameObject;
+                waveStart += (int)UnityEngine.Random.Range(7f, 15);
                 return;
             }
-            else {
-                */
-                if (count % 10 == 0)
-                {
-                    wave = waves[1];
-                    wave.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x - 100f, wave.GetComponent<Transform>().position.y, GetComponent<Transform>().position.z + 18200f);
-                    /*
-                    for (int i = 0; i < 2; i++)
-                    {
-                        Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) - ((i + 1) * wave3.GetComponent<BoxCollider>().bounds.size.x), wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
-                        temp = Instantiate(wave3, pos1, Quaternion.identity) as GameObject;
-                    }
-                    for (int i = 0; i < 2; i++)
-                    {
-                        Vector3 pos1 = new Vector3((GetComponent<Transform>().position.x + 400f) + ((i + 1) * wave3.GetComponent<BoxCollider>().bounds.size.x), wave3.GetComponent<Transform>().position.y, col.gameObject.GetComponent<Transform>().position.z + 4000f);
-                        temp = Instantiate(wave3, pos1, Quaternion.identity) as GameObject;
-                    }
-
-                    */
-
-                    nextChunk = Instantiate(blankChunk);
-                    nextChunk.tag = "generator";
-                    //nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z - 4000f + wave3.GetComponent<BoxCollider>().bounds.size.z/2);
-                    nextChunk.GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 3500f);
-                    return;
-                }
                 
            // }
                 generateChunk(col.gameObject);
