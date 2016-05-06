@@ -277,8 +277,8 @@ public class generate : MonoBehaviour {
             }
         }
 
-
-                return obstacles[0];
+        
+                return trees[(int)UnityEngine.Random.Range(0f, trees.Length)];
     }
 
     void OnTriggerEnter(Collider col)
@@ -360,7 +360,6 @@ public class generate : MonoBehaviour {
             if(count == waveStart)
             {
                 int pick = (int)UnityEngine.Random.Range(0f, waves.Length);
-                pick = 3;
                 wave = waves[pick];
 
                 Vector3 newPos = new Vector3();
@@ -398,7 +397,7 @@ public class generate : MonoBehaviour {
 
 
                 GameObject newWave = Instantiate(wave, newPos, Quaternion.identity) as GameObject;
-                waveStart += (int)UnityEngine.Random.Range(7f, 15);
+                waveStart += (int)UnityEngine.Random.Range(10f, 25f);
                 return;
             }
                 
