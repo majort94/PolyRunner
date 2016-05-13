@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class player : MonoBehaviour {
 
 	// Use this for initialization
-	private float speed = 225f;
+	public float speed = 225f;
 	public Renderer rend;
 	public Material mat;
 	public bool forward = true;
@@ -47,6 +47,12 @@ public class player : MonoBehaviour {
         if (begin){
             transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
         if (forward) {
+                GetComponent<fuelTimer>().start = true;
+                if (transform.position.z % 1800 == 0)
+                { 
+                Instantiate(health);
+                Instantiate(health);
+                }
                 score = transform.position.z / 5;
                 scoreText.text = "Score: " + (int)score;
             //Vector3 move = Vector3.forward * speed;
@@ -184,17 +190,19 @@ public class player : MonoBehaviour {
         //if (!hit)
         // {
 
-
-
-        if(GameObject.Find("GameManager").GetComponent<stats>().count > 3)
+        if (col.gameObject.layer == 12)
         {
-            if (col.gameObject.layer == 12)
-            {
-                //Debug.Log("health");
-                col.gameObject.GetComponent<fuel>().activate();
-                firstHit = false;
-                return;
-            }
+            //Debug.Log("health");
+            col.gameObject.GetComponent<fuel>().activate();
+            GetComponent<fuelTimer>().pickup();
+            //firstHit = false;
+            return;
+        }
+
+        if (GameObject.Find("GameManager").GetComponent<stats>().count > 3)
+        {
+
+            /*
             if (firstHit && (Time.time > (deathPause + .2f)))
             {
                 forward = false;
@@ -202,12 +210,15 @@ public class player : MonoBehaviour {
                 return;
 
             }
+            
                 firstHit = true;
-                deathPause = Time.time;
-                transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
-                GetComponent<fuelTimer>().start = true;
-                Instantiate(health);
-                Instantiate(health);
+                */
+                //deathPause = Time.time;
+               // transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
+            //GetComponent<fuelTimer>().start = true;
+            GetComponent<fuelTimer>().onHit();
+           // Instantiate(health);
+             //   Instantiate(health);
         }
         else
         {
