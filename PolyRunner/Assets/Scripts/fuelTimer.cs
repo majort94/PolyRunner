@@ -51,7 +51,7 @@ public class fuelTimer : MonoBehaviour {
             if (fuelBarScale <= 0)
             {
                 //playerRef.transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
-                playerRef.GetComponent<player>().forward = false;
+                //playerRef.GetComponent<player>().forward = false;
                 goingDown = false;
             }
 
