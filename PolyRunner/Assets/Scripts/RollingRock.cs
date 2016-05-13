@@ -11,7 +11,7 @@ public class RollingRock : MonoBehaviour {
     // Use this for initialization
 	void Start () {
 
-        transform.position = new Vector3(transform.position.x, 10f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         GetComponent<Rigidbody>().useGravity = false;
         //transform.localScale = new Vector3(.1f, .1f, .1f);
 		//Random float for x

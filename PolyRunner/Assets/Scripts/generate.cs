@@ -232,7 +232,8 @@ public class generate : MonoBehaviour {
         switch (count)
         {
             case 5:
-                prog1 = true;
+                //prog1 = true;
+                prog2 = true;
                 break;
             case 10:
                 prog1 = false;
@@ -270,6 +271,15 @@ public class generate : MonoBehaviour {
                     if (rand < 25)
                     {
                         return obstacles[3];
+                    }
+                    else
+                    {
+                        if (rand < 24)
+                        {
+                            Debug.Log("waveeee");
+                            return obstacles[4];
+                        }
+
                     }
 
                 }
@@ -360,6 +370,7 @@ public class generate : MonoBehaviour {
             if(count == waveStart)
             {
                 int pick = (int)UnityEngine.Random.Range(0f, waves.Length);
+
                 wave = waves[pick];
 
                 Vector3 newPos = new Vector3();
@@ -367,10 +378,11 @@ public class generate : MonoBehaviour {
                 nextChunk = Instantiate(blankChunk);
                 nextChunk.tag = "generator";
 
+                
                 switch (pick)
                 {
                     case 0:
-                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x + 400f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 7000f);
+                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x + 400f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 7600f);
                         nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 3500f);
                         break;
 
@@ -385,8 +397,9 @@ public class generate : MonoBehaviour {
                         break;
 
                     case 3:
-                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 1000f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 7900f);
+                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 1000f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 3700f);
                         nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 6100f);
+
                         break;
                     default:
                         break;
@@ -396,7 +409,7 @@ public class generate : MonoBehaviour {
 
 
 
-                GameObject newWave = Instantiate(wave, newPos, Quaternion.identity) as GameObject;
+                GameObject newWave = Instantiate(wave, newPos, wave.transform.rotation) as GameObject;
                 waveStart += (int)UnityEngine.Random.Range(10f, 25f);
                 return;
             }
