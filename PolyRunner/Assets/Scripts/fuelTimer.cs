@@ -19,13 +19,30 @@ public class fuelTimer : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+
+    public void onHit()
+    {
+        fuelBarScale = fuelBarScale - 0.20f;
+    }
+
+    public void pickup()
+    {
+        //Debug.Log("scaling");
+        fuelBarScale = fuelBarScale + 0.20f;
+    }
+
 	void Update () {
         if (start)
         {
+            
+            if(fuelBarScale > 1f)
+            {
+                fuelBarScale = 1f;
+            }
             norm = false;
             if (goingDown && Time.time > lastTime + 0.08f)
             {
-                fuelBarScale = fuelBarScale - 0.01f;
+                fuelBarScale = fuelBarScale - 0.004f;
                 fuelBar.transform.localScale = new Vector3(fuelBarScale, fuelBar.transform.localScale.y, fuelBar.transform.localScale.z);
                 fuelText.text = "Fuel: " + (int)(fuelBarScale * 100) + "%";
                 lastTime = Time.time;

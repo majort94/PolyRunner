@@ -10,7 +10,7 @@ public class fuel : MonoBehaviour {
     private bool left = false;
 
     private int id;
-    private static int idInc = 0;
+    private static int idInc = 1;
 	// Use this for initialization
 	void Start () {
 
@@ -18,14 +18,14 @@ public class fuel : MonoBehaviour {
         count = GameObject.Find("GameManager").GetComponent<stats>().count;
         player = GameObject.Find("hydroplane");
 
-        transform.position = new Vector3(player.GetComponent<Collider>().bounds.center.x + 50f, 5f, GameObject.Find("chunk" + (count - 3).ToString()).GetComponent<Collider>().bounds.center.z);
+        transform.position = new Vector3(player.GetComponent<Collider>().bounds.center.x + 150f, 5f, player.GetComponent<Collider>().bounds.center.z + 2000f);
 
-        if(id == 1)
+        if(id % 2 == 0)
         {
-            transform.position = new Vector3(transform.position.x - 100f, 5f, transform.position.z);
+            transform.position = new Vector3(transform.position.x - 300f, 5f, transform.position.z);
         }
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, 300f);
+        Collider[] hits = Physics.OverlapSphere(transform.position, 500f);
         //Debug.Log("hitsSize " + hits.Length);
         GameObject closestObject = null;
         GameObject obj;
@@ -51,18 +51,20 @@ public class fuel : MonoBehaviour {
             }
         }
 
+
         Vector3 newPos = closestObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+        newPos = new Vector4(newPos.x, 5f, newPos.z);
         //Debug.Log("trasnform before " + transform.position);
         //Debug.Log("closest trans " + closestObject.transform.position);
         //Debug.Log("newPos before " + newPos);
         //Debug.Log("closest " + newPos);
         if (newPos.x < transform.position.x)
         {
-            newPos.x += GetComponent<Collider>().bounds.size.x;
+            newPos.x += GetComponent<Collider>().bounds.size.x * 2f;
         }
         else
         {
-            newPos.x -= GetComponent<Collider>().bounds.size.x;
+            newPos.x -= GetComponent<Collider>().bounds.size.x * 2f;
         }
         //Debug.Log("trasnform before2 " + transform.position);
         transform.position = newPos;
@@ -110,8 +112,9 @@ public class fuel : MonoBehaviour {
 
     public void activate()
     {
-            //Debug.Log("hit2");
-            GameObject.Find("hydroplane").GetComponent<fuelTimer>().start = false;
+        //Debug.Log("hit2");
+        //GameObject.Find("hydroplane").GetComponent<fuelTimer>().start = false;
+        Destroy(gameObject);
     }
     void onColliderEnter(Collision col)
     {
@@ -138,7 +141,7 @@ public class fuel : MonoBehaviour {
         if (col.gameObject.CompareTag("player"))
             {
             Debug.Log("hit2");
-            GameObject.Find("hydroplane").GetComponent<fuelTimer>().start = false;
+            //GameObject.Find("hydroplane").GetComponent<fuelTimer>().start = false;
                  Destroy(gameObject);
             }
        // }
