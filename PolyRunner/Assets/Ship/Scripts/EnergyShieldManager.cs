@@ -15,23 +15,25 @@ public class EnergyShieldManager : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (first && (Time.time > startTime + 3f))
-        {
-            triggerBlueShieldAnim();
-            first = false;
-        }
 	}
 
     public void triggerBlueShieldAnim()
     {
         // create new energy shield object (player clone, healing texture)
-        GameObject blueShield = (GameObject) Instantiate(blueEnergyShield, transform.position, transform.rotation);
-        blueShield.transform.localScale = new Vector3(109, 109, 109);
+        //GameObject blueShield = (GameObject) Instantiate(blueEnergyShield, transform.position, transform.rotation);
+        GameObject blueShield = (GameObject)Instantiate(blueEnergyShield, transform.position, transform.rotation);
+        blueShield.transform.localPosition = new Vector3(blueShield.transform.localPosition.x + 4f, blueShield.transform.localPosition.y - 2f, blueShield.transform.localPosition.z - 4f);
+        blueShield.transform.localScale = new Vector3(125, 125, 125);
+        blueShield.transform.parent = GameObject.Find("/hydroplane/body").transform;
+
     }
 
     public void triggerRedShieldAnim()
     {
         // create new energy shield object (player clone, damaged texture)
-        Instantiate(redEnergyShield, transform.position, transform.rotation);
+        GameObject redShield = (GameObject)Instantiate(redEnergyShield, transform.position, transform.rotation);
+        redShield.transform.localPosition = new Vector3(redShield.transform.localPosition.x + 4f, redShield.transform.localPosition.y - 2f, redShield.transform.localPosition.z - 4f);
+        redShield.transform.localScale = new Vector3(125, 125, 125);
+        redShield.transform.parent = GameObject.Find("/hydroplane/body").transform;
     }
 }

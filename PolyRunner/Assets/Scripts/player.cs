@@ -19,6 +19,8 @@ public class player : MonoBehaviour {
     public float score = 0f;
     public Text scoreText;
 
+    public GameObject shipReference;
+
     float strafe;
 
     // Variables for rotation movement
@@ -38,10 +40,12 @@ public class player : MonoBehaviour {
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
-	}
+        //shipReference.GetComponent<EnergyShieldManager>().triggerBlueShieldAnim();
+    }
 
     // Update is called once per frame
     void FixedUpdate() {
+        //shipReference.GetComponent<EnergyShieldManager>().triggerBlueShieldAnim();
         Quaternion input = InputTracking.GetLocalRotation(rift);
         //Debug.Log("z " + input.z);
         if (begin){
@@ -189,17 +193,20 @@ public class player : MonoBehaviour {
         // {
         //if (!hit)
         // {
-
+        Debug.Log("health");
         if (col.gameObject.layer == 12)
         {
             //Debug.Log("health");
             col.gameObject.GetComponent<fuel>().activate();
             GetComponent<fuelTimer>().pickup();
             //firstHit = false;
+
+            shipReference.GetComponent<EnergyShieldManager>().triggerBlueShieldAnim();
             return;
         }
 
-        if (GameObject.Find("GameManager").GetComponent<stats>().count > 3)
+        // if (GameObject.Find("GameManager").GetComponent<stats>().count > 3)
+        if (col.gameObject.layer == 11)
         {
 
             /*
@@ -217,8 +224,9 @@ public class player : MonoBehaviour {
                // transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
             //GetComponent<fuelTimer>().start = true;
             GetComponent<fuelTimer>().onHit();
-           // Instantiate(health);
-             //   Instantiate(health);
+            shipReference.GetComponent<EnergyShieldManager>().triggerRedShieldAnim();
+            // Instantiate(health);
+            //   Instantiate(health);
         }
         else
         {

@@ -40,7 +40,7 @@ public class generate : MonoBehaviour {
     private Boolean nonSlash = true;
     private float prevZ;
     private int slashIterator = 0;
-    private int waveStart = 10;
+    private int waveStart = 3;
 
     public GameObject[] obstacles;
     public GameObject[] trees;
@@ -370,7 +370,7 @@ public class generate : MonoBehaviour {
             if(count == waveStart)
             {
                 int pick = (int)UnityEngine.Random.Range(0f, waves.Length);
-
+                pick = 1;
                 wave = waves[pick];
 
                 Vector3 newPos = new Vector3();
@@ -392,7 +392,7 @@ public class generate : MonoBehaviour {
                         break;
 
                     case 2:
-                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 100f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 11900f);
+                        newPos = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x - 100f, wave.GetComponent<Transform>().position.y, GameObject.Find("hydroplane").GetComponent<Transform>().position.z + 1000f);
                         nextChunk.GetComponent<Transform>().position = new Vector3(GameObject.Find("hydroplane").GetComponent<Transform>().position.x, 0f, col.gameObject.GetComponent<Transform>().position.z + 10000);
                         break;
 
@@ -410,7 +410,7 @@ public class generate : MonoBehaviour {
 
 
                 GameObject newWave = Instantiate(wave, newPos, wave.transform.rotation) as GameObject;
-                waveStart += (int)UnityEngine.Random.Range(10f, 25f);
+                waveStart +=  (int)UnityEngine.Random.Range(10f, 25f);
                 return;
             }
                 
