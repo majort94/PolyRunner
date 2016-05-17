@@ -1,0 +1,12 @@
+Event	ID	Name			Wwise Object Path	Notes
+	979765113	wiz			\Default Work Unit\wiz	
+	2213912929	badHit			\Default Work Unit\badHit	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	37794420	hit1	C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\.cache\Windows\SFX\hit1_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\hit1		217664
+	258684341	wiz2	C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\.cache\Windows\SFX\wiz2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\wiz\wiz2		181312
+	412767762	wiz4	C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\.cache\Windows\SFX\wiz4_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\wiz\wiz4		112704
+	487015102	wiz3	C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\.cache\Windows\SFX\wiz3_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\wiz\wiz3		124992
+	671154440	wiz0	C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\.cache\Windows\SFX\wiz0_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\wiz\wiz0		159808
+	717274757	wiz1	C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\.cache\Windows\SFX\wiz1_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\wiz\wiz1		170048
+

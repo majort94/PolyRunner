@@ -49,7 +49,15 @@ public class player : MonoBehaviour {
         Quaternion input = InputTracking.GetLocalRotation(rift);
         //Debug.Log("z " + input.z);
         if (begin){
-            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+            if (transform.Find("body").Find("sand")) {
+                transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+                if (!transform.Find("body").Find("sand").GetComponent<ParticleSystem>().isPlaying)
+                {
+                    transform.Find("body").Find("sand").GetComponent<ParticleSystem>().Play();
+                }
+            }
+                
+
         if (forward) {
                 GetComponent<fuelTimer>().start = true;
                 if (transform.position.z % 1800 == 0)
@@ -163,15 +171,22 @@ public class player : MonoBehaviour {
                     rb.velocity = new Vector3(-500f, 0f, 500f);
                 }
                 plane.GetComponent<Renderer>().material.mainTextureOffset = new Vector2(plane.GetComponent<Renderer>().material.mainTextureOffset.x - ((rb.velocity.x + move.x) / 65f * Time.fixedDeltaTime), plane.GetComponent<Renderer>().material.mainTextureOffset.y - ((rb.velocity.z + move.z) / 49f * Time.fixedDeltaTime));
+                GameObject.Find("/hydroplane/PlaneSand").GetComponent<Renderer>().material.mainTextureOffset = new Vector2(plane.GetComponent<Renderer>().material.mainTextureOffset.x - ((rb.velocity.x + move.x) / 65f * Time.fixedDeltaTime), plane.GetComponent<Renderer>().material.mainTextureOffset.y - ((rb.velocity.z + move.z) / 49f * Time.fixedDeltaTime));
+                GameObject.Find("/hydroplane/PlaneSand1").GetComponent<Renderer>().material.mainTextureOffset = new Vector2(plane.GetComponent<Renderer>().material.mainTextureOffset.x - ((rb.velocity.x + move.x) / 65f * Time.fixedDeltaTime), plane.GetComponent<Renderer>().material.mainTextureOffset.y - ((rb.velocity.z + move.z) / 49f * Time.fixedDeltaTime));
+                GameObject.Find("/hydroplane/PlaneSand2").GetComponent<Renderer>().material.mainTextureOffset = new Vector2(plane.GetComponent<Renderer>().material.mainTextureOffset.x - ((rb.velocity.x + move.x) / 65f * Time.fixedDeltaTime), plane.GetComponent<Renderer>().material.mainTextureOffset.y - ((rb.velocity.z + move.z) / 49f * Time.fixedDeltaTime));
                 //Debug.Log("velocity " + GetComponent<Rigidbody>().velocity);
 
             }
             else
             {
+                
                 if (!dead) {
                     dead = true;
                     deadTimer = Time.timeSinceLevelLoad;
                     rb.velocity = Vector3.zero;
+                    //transform.Find("body").Find("sand").GetComponent<ParticleSystem>().Pause();
+                    //transform.Find("body").Find("sand").GetComponent<ParticleSystem>().Clear();
+                    Destroy(transform.Find("body").Find("sand").gameObject);
                 }
                 else
                 {
@@ -181,6 +196,7 @@ public class player : MonoBehaviour {
                         SceneManager.LoadScene(0);
                     }
                 }
+                
             }
 
     }
@@ -193,7 +209,13 @@ public class player : MonoBehaviour {
         // {
         //if (!hit)
         // {
-        Debug.Log("health");
+       // Debug.Log("hit");
+        if (col.isTrigger)
+        {
+            //Debug.Log("hit2");
+            return;
+        }
+
         if (col.gameObject.layer == 12)
         {
             //Debug.Log("health");
@@ -220,9 +242,11 @@ public class player : MonoBehaviour {
             
                 firstHit = true;
                 */
-                //deathPause = Time.time;
-               // transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
+            //deathPause = Time.time;
+            // transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
             //GetComponent<fuelTimer>().start = true;
+            transform.Find("body").gameObject.GetComponent<badHit>().hit();
+            //Destroy(col.gameObject);
             GetComponent<fuelTimer>().onHit();
             shipReference.GetComponent<EnergyShieldManager>().triggerRedShieldAnim();
             // Instantiate(health);

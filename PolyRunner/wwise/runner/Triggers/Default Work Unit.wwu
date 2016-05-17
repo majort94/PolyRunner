@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{F7AE4CC6-A7DD-4ED2-8471-7DA928391391}" SchemaVersion="70">
+	<Triggers>
+		<WorkUnit Name="Default Work Unit" ID="{F7AE4CC6-A7DD-4ED2-8471-7DA928391391}" PersistMode="Standalone">
+			<ChildrenList>
+				<Trigger Name="badHit2" ID="{26EA0285-A03B-4F5F-A7DA-72E012055668}"/>
+				<Trigger Name="badHit" ID="{33D78A22-5812-4FD8-A0A8-1F8D9485C73A}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Triggers>
+</WwiseDocument>

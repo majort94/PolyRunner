@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginInfo Project="runner" Platform="Windows" Motion="false">
+	<Plugins>
+		<Plugin Name="Oculus Spatializer" ID="9572518"/>
+	</Plugins>
+</PluginInfo>

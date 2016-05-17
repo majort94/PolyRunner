@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{FFB7BCE8-A183-43C1-A5E2-43387635E450}" SchemaVersion="70">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{FFB7BCE8-A183-43C1-A5E2-43387635E450}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="wiz" ID="{FAA9F627-CC66-48AF-8705-CF1DBB16247E}">
+					<ChildrenList>
+						<Action Name="Play" ID="{FB29E851-1393-4176-A3BA-79701E4602EE}" ShortID="739627280" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{A8A24416-D7A4-4AF0-8873-B45C85B67E61}" Global="false">
+									<ObjectRef Name="wiz" ID="{816D7298-23B4-43C4-8119-77B3FDC6184A}" WorkUnitID="{296A14DC-D6C1-456B-A17A-D7283D57AB55}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="badHit" ID="{503C70AA-02CA-4542-8A56-20CCFD08444E}">
+					<ChildrenList>
+						<Action Name="Play" ID="{95BDE877-639E-47AA-BED9-FE70DC508033}" ShortID="486768719" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{F1AC7896-FFAC-4078-A8D9-797B04CBEDEE}" Global="false">
+									<ObjectRef Name="hit1" ID="{AD5ED975-7B63-4B3A-82D4-064CDABE7106}" WorkUnitID="{296A14DC-D6C1-456B-A17A-D7283D57AB55}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

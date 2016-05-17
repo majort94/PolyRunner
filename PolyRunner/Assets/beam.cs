@@ -11,7 +11,7 @@ public class beam : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         //Debug.Log("dist " + Vector3.Distance(transform.parent.position, GameObject.Find("hydroplane").transform.position));
-        if (Vector3.Distance(transform.parent.position, GameObject.Find("hydroplane").transform.position) <= 150f)
+        if (Vector3.Distance(transform.parent.position, GameObject.Find("hydroplane").transform.position) <= 75f)
         {
             //Debug.Log("close");
             transform.Find("beam2").gameObject.SetActive(true);
@@ -22,7 +22,7 @@ public class beam : MonoBehaviour {
             //newRot.x = -90f;
             transform.rotation = Quaternion.LookRotation(newRot);
 
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z - .05f);
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z - .1f);
 
             if(transform.position.z < GameObject.Find("hydroplane").transform.position.z)
             {
