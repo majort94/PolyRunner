@@ -13,7 +13,7 @@ public class RollingRock : MonoBehaviour {
 
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         GetComponent<Rigidbody>().useGravity = false;
-        //transform.localScale = new Vector3(.1f, .1f, .1f);
+        //transform.GetChild(0).localScale = new Vector3(1.5f, 1.84f, 3.34f);
 		//Random float for x
 
         /*

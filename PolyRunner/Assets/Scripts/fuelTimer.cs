@@ -28,7 +28,9 @@ public class fuelTimer : MonoBehaviour {
     public void pickup()
     {
         //Debug.Log("scaling");
-        fuelBarScale = fuelBarScale + 0.20f;
+        //fuelBarScale = fuelBarScale + 0.20f;
+        fuelBarScale = 1;
+        start = false;
     }
 
 	void Update () {

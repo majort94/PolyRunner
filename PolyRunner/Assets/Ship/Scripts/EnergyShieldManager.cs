@@ -21,19 +21,23 @@ public class EnergyShieldManager : MonoBehaviour {
     {
         // create new energy shield object (player clone, healing texture)
         //GameObject blueShield = (GameObject) Instantiate(blueEnergyShield, transform.position, transform.rotation);
-        GameObject blueShield = (GameObject)Instantiate(blueEnergyShield, transform.position, transform.rotation);
-        blueShield.transform.localPosition = new Vector3(blueShield.transform.localPosition.x + 4f, blueShield.transform.localPosition.y - 2f, blueShield.transform.localPosition.z - 4f);
-        blueShield.transform.localScale = new Vector3(125, 125, 125);
+        Vector3 newPos = new Vector3(transform.position.x, 0f, transform.position.z);
+        GameObject blueShield = (GameObject)Instantiate(blueEnergyShield, newPos, transform.rotation);
+
+        blueShield.transform.localScale = new Vector3(128, 128, 128);
         blueShield.transform.parent = GameObject.Find("/hydroplane/body").transform;
+        blueShield.transform.localPosition = new Vector3(blueShield.transform.localPosition.x + 49f, blueShield.transform.localPosition.y - 18f, blueShield.transform.localPosition.z - 39f);
 
     }
 
     public void triggerRedShieldAnim()
     {
         // create new energy shield object (player clone, damaged texture)
-        GameObject redShield = (GameObject)Instantiate(redEnergyShield, transform.position, transform.rotation);
-        redShield.transform.localPosition = new Vector3(redShield.transform.localPosition.x + 4f, redShield.transform.localPosition.y - 2f, redShield.transform.localPosition.z - 4f);
-        redShield.transform.localScale = new Vector3(125, 125, 125);
+        Vector3 newPos = new Vector3(transform.position.x, 0f, transform.position.z);
+        GameObject redShield = (GameObject)Instantiate(redEnergyShield, newPos, transform.rotation);
+        
+        redShield.transform.localScale = new Vector3(128, 128, 128);
         redShield.transform.parent = GameObject.Find("/hydroplane/body").transform;
+        redShield.transform.localPosition = new Vector3(redShield.transform.localPosition.x + 49f, redShield.transform.localPosition.y - 18f, redShield.transform.localPosition.z - 39f);
     }
 }

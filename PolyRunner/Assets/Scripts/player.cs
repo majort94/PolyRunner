@@ -59,12 +59,14 @@ public class player : MonoBehaviour {
                 
 
         if (forward) {
+                /*
                 GetComponent<fuelTimer>().start = true;
                 if (transform.position.z % 1800 == 0)
                 { 
                 Instantiate(health);
                 Instantiate(health);
                 }
+                */
                 score = transform.position.z / 5;
                 scoreText.text = "Score: " + (int)score;
             //Vector3 move = Vector3.forward * speed;
@@ -221,7 +223,7 @@ public class player : MonoBehaviour {
             //Debug.Log("health");
             col.gameObject.GetComponent<fuel>().activate();
             GetComponent<fuelTimer>().pickup();
-            //firstHit = false;
+            firstHit = false;
 
             shipReference.GetComponent<EnergyShieldManager>().triggerBlueShieldAnim();
             return;
@@ -231,26 +233,27 @@ public class player : MonoBehaviour {
         if (col.gameObject.layer == 11)
         {
 
-            /*
+            
             if (firstHit && (Time.time > (deathPause + .2f)))
             {
-                forward = false;
-                GetComponent<fuelTimer>().start = true;
-                return;
+                //forward = false;
+                //GetComponent<fuelTimer>().start = true;
+                //return;
 
             }
             
                 firstHit = true;
-                */
-            //deathPause = Time.time;
+                
+            deathPause = Time.time;
             // transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
-            //GetComponent<fuelTimer>().start = true;
+            GetComponent<fuelTimer>().start = true;
             transform.Find("body").gameObject.GetComponent<badHit>().hit();
             //Destroy(col.gameObject);
             GetComponent<fuelTimer>().onHit();
             shipReference.GetComponent<EnergyShieldManager>().triggerRedShieldAnim();
-            // Instantiate(health);
-            //   Instantiate(health);
+            Debug.Log("hit " + col.gameObject);
+             Instantiate(health);
+             //Instantiate(health);
         }
         else
         {

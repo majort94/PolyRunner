@@ -209,7 +209,8 @@ public class generate : MonoBehaviour {
             //index.GetComponent<Transform>().position = new Vector3(newPos.x, 0f, index.GetComponent<Transform>().position.z);
             prevObstacle = temp;
             nextObstacle = Instantiate(temp, newPos, Quaternion.identity) as GameObject;
-            nextObstacle.GetComponent<Transform>().parent = chunk.GetComponent<Transform>(); 
+            //nextObstacle.GetComponent<Transform>().parent = chunk.GetComponent<Transform>(); 
+            nextObstacle.transform.SetParent(chunk.GetComponent<Transform>());
             //index.GetComponent<Transform>().position = new Vector3(index.GetComponent<Transform>().position.x + spacer, 0f, index.GetComponent<Transform>().position.z);
             if (index.GetComponent<Transform>().position.x > chunk.GetComponent<BoxCollider>().ClosestPointOnBounds(index.GetComponent<BoxCollider>().bounds.center).x)
             // if(index.GetComponent<Transform>().position.x > GetComponent<Transform>().position.x + 15500f)
