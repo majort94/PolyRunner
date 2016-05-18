@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: af03ed9a25818e04c864ef20a66e9fa9
-timeCreated: 1462840074
+timeCreated: 1463118269
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - blueEnergyShield: {fileID: 161646, guid: 1aa856cc2968aea44af0ac528d4d316b, type: 2}
+  - redEnergyShield: {fileID: 194808, guid: 08c29ded71d7c3b48a369f781f42c396, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

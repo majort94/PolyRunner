@@ -19,6 +19,8 @@ public class player : MonoBehaviour {
     public float score = 0f;
     public Text scoreText;
 
+    public GameObject shipReference;
+
     float strafe;
 
     // Variables for rotation movement
@@ -38,21 +40,33 @@ public class player : MonoBehaviour {
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
-	}
+        //shipReference.GetComponent<EnergyShieldManager>().triggerBlueShieldAnim();
+    }
 
     // Update is called once per frame
     void FixedUpdate() {
+        //shipReference.GetComponent<EnergyShieldManager>().triggerBlueShieldAnim();
         Quaternion input = InputTracking.GetLocalRotation(rift);
         //Debug.Log("z " + input.z);
         if (begin){
-            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+            if (transform.Find("body").Find("sand")) {
+                transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+                if (!transform.Find("body").Find("sand").GetComponent<ParticleSystem>().isPlaying)
+                {
+                    transform.Find("body").Find("sand").GetComponent<ParticleSystem>().Play();
+                }
+            }
+                
+
         if (forward) {
+                /*
                 GetComponent<fuelTimer>().start = true;
                 if (transform.position.z % 1800 == 0)
                 { 
                 Instantiate(health);
                 Instantiate(health);
                 }
+                */
                 score = transform.position.z / 5;
                 scoreText.text = "Score: " + (int)score;
             //Vector3 move = Vector3.forward * speed;
@@ -159,15 +173,22 @@ public class player : MonoBehaviour {
                     rb.velocity = new Vector3(-500f, 0f, 500f);
                 }
                 plane.GetComponent<Renderer>().material.mainTextureOffset = new Vector2(plane.GetComponent<Renderer>().material.mainTextureOffset.x - ((rb.velocity.x + move.x) / 65f * Time.fixedDeltaTime), plane.GetComponent<Renderer>().material.mainTextureOffset.y - ((rb.velocity.z + move.z) / 49f * Time.fixedDeltaTime));
+                GameObject.Find("/hydroplane/PlaneSand").GetComponent<Renderer>().material.mainTextureOffset = new Vector2(plane.GetComponent<Renderer>().material.mainTextureOffset.x - ((rb.velocity.x + move.x) / 65f * Time.fixedDeltaTime), plane.GetComponent<Renderer>().material.mainTextureOffset.y - ((rb.velocity.z + move.z) / 49f * Time.fixedDeltaTime));
+                GameObject.Find("/hydroplane/PlaneSand1").GetComponent<Renderer>().material.mainTextureOffset = new Vector2(plane.GetComponent<Renderer>().material.mainTextureOffset.x - ((rb.velocity.x + move.x) / 65f * Time.fixedDeltaTime), plane.GetComponent<Renderer>().material.mainTextureOffset.y - ((rb.velocity.z + move.z) / 49f * Time.fixedDeltaTime));
+                GameObject.Find("/hydroplane/PlaneSand2").GetComponent<Renderer>().material.mainTextureOffset = new Vector2(plane.GetComponent<Renderer>().material.mainTextureOffset.x - ((rb.velocity.x + move.x) / 65f * Time.fixedDeltaTime), plane.GetComponent<Renderer>().material.mainTextureOffset.y - ((rb.velocity.z + move.z) / 49f * Time.fixedDeltaTime));
                 //Debug.Log("velocity " + GetComponent<Rigidbody>().velocity);
 
             }
             else
             {
+                
                 if (!dead) {
                     dead = true;
                     deadTimer = Time.timeSinceLevelLoad;
                     rb.velocity = Vector3.zero;
+                    //transform.Find("body").Find("sand").GetComponent<ParticleSystem>().Pause();
+                    //transform.Find("body").Find("sand").GetComponent<ParticleSystem>().Clear();
+                    Destroy(transform.Find("body").Find("sand").gameObject);
                 }
                 else
                 {
@@ -177,6 +198,7 @@ public class player : MonoBehaviour {
                         SceneManager.LoadScene(0);
                     }
                 }
+                
             }
 
     }
@@ -189,36 +211,49 @@ public class player : MonoBehaviour {
         // {
         //if (!hit)
         // {
+       // Debug.Log("hit");
+        if (col.isTrigger)
+        {
+            //Debug.Log("hit2");
+            return;
+        }
 
         if (col.gameObject.layer == 12)
         {
             //Debug.Log("health");
             col.gameObject.GetComponent<fuel>().activate();
             GetComponent<fuelTimer>().pickup();
-            //firstHit = false;
+            firstHit = false;
+
+            shipReference.GetComponent<EnergyShieldManager>().triggerBlueShieldAnim();
             return;
         }
 
-        if (GameObject.Find("GameManager").GetComponent<stats>().count > 3)
+        // if (GameObject.Find("GameManager").GetComponent<stats>().count > 3)
+        if (col.gameObject.layer == 11)
         {
 
-            /*
+            
             if (firstHit && (Time.time > (deathPause + .2f)))
             {
-                forward = false;
-                GetComponent<fuelTimer>().start = true;
-                return;
+                //forward = false;
+                //GetComponent<fuelTimer>().start = true;
+                //return;
 
             }
             
                 firstHit = true;
-                */
-                //deathPause = Time.time;
-               // transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
-            //GetComponent<fuelTimer>().start = true;
+                
+            deathPause = Time.time;
+            // transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
+            GetComponent<fuelTimer>().start = true;
+            transform.Find("body").gameObject.GetComponent<badHit>().hit();
+            //Destroy(col.gameObject);
             GetComponent<fuelTimer>().onHit();
-           // Instantiate(health);
-             //   Instantiate(health);
+            shipReference.GetComponent<EnergyShieldManager>().triggerRedShieldAnim();
+            Debug.Log("hit " + col.gameObject);
+             Instantiate(health);
+             //Instantiate(health);
         }
         else
         {

@@ -28,7 +28,9 @@ public class fuelTimer : MonoBehaviour {
     public void pickup()
     {
         //Debug.Log("scaling");
-        fuelBarScale = fuelBarScale + 0.20f;
+        //fuelBarScale = fuelBarScale + 0.20f;
+        fuelBarScale = 1;
+        start = false;
     }
 
 	void Update () {
@@ -51,7 +53,7 @@ public class fuelTimer : MonoBehaviour {
             if (fuelBarScale <= 0)
             {
                 //playerRef.transform.Find("body").GetComponent<MeshRenderer>().material = gameOverMat;
-                //playerRef.GetComponent<player>().forward = false;
+                playerRef.GetComponent<player>().forward = false;
                 goingDown = false;
             }
 
@@ -62,7 +64,7 @@ public class fuelTimer : MonoBehaviour {
             {
                 norm = true;
                 fuelBar.transform.localScale = new Vector3(1f, fuelBar.transform.localScale.y, fuelBar.transform.localScale.z);
-                playerRef.transform.Find("body").GetComponent<MeshRenderer>().material = GetComponent<player>().mat;
+                //playerRef.transform.Find("body").GetComponent<MeshRenderer>().material = GetComponent<player>().mat;
                 fuelBarScale = 1;
                 fuelText.text = "Fuel: " + (int)(fuelBarScale * 100) + "%";
             }

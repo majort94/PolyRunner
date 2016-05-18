@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="10" SoundbankVersion="113">
+	<RootPaths>
+		<ProjectRoot>C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3161908922" Language="SFX">
+			<ShortName>main</ShortName>
+			<Path>main.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2213912929" Name="badHit"/>
+				<Event Id="979765113" Name="wiz"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="37794420" Language="SFX">
+					<ShortName>hit1.wav</ShortName>
+					<Path>SFX\hit1_9E69E797.wem</Path>
+				</File>
+				<File Id="258684341" Language="SFX">
+					<ShortName>wiz2.wav</ShortName>
+					<Path>SFX\wiz2_9E69E797.wem</Path>
+				</File>
+				<File Id="412767762" Language="SFX">
+					<ShortName>wiz4.wav</ShortName>
+					<Path>SFX\wiz4_9E69E797.wem</Path>
+				</File>
+				<File Id="487015102" Language="SFX">
+					<ShortName>wiz3.wav</ShortName>
+					<Path>SFX\wiz3_9E69E797.wem</Path>
+				</File>
+				<File Id="671154440" Language="SFX">
+					<ShortName>wiz0.wav</ShortName>
+					<Path>SFX\wiz0_9E69E797.wem</Path>
+				</File>
+				<File Id="717274757" Language="SFX">
+					<ShortName>wiz1.wav</ShortName>
+					<Path>SFX\wiz1_9E69E797.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

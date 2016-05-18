@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValidationCache Version="1" SchemaVersion="70">
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="4057180182" DateHigh="30519024"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Attenuations\Default Work Unit.wwu" DateLow="2828210653" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Control Surface Sessions\Default Work Unit.wwu" DateLow="2828476124" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Conversion Settings\Default Work Unit.wwu" DateLow="2828260718" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Conversion Settings\Factory Conversion Settings.wwu" DateLow="2780309760" DateHigh="30449190"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Dynamic Dialogue\Default Work Unit.wwu" DateLow="2828390897" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Effects\Default Work Unit.wwu" DateLow="2828881556" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Effects\Factory Effects.wwu" DateLow="2780309760" DateHigh="30449190"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Events\Default Work Unit.wwu" DateLow="4057260287" DateHigh="30519024"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Game Parameters\Default Work Unit.wwu" DateLow="2828806452" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="2828170599" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="595001707" DateHigh="30518990"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Mixing Sessions\Default Work Unit.wwu" DateLow="2828526076" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Modulators\Default Work Unit.wwu" DateLow="2828435958" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Presets\Default Work Unit.wwu" DateLow="2828921607" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Queries\Default Work Unit.wwu" DateLow="2828345950" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Queries\Factory Queries.wwu" DateLow="2780309760" DateHigh="30449190"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\runner.Tom.wsettings" DateLow="2685057558" DateHigh="30519078"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\runner.wproj" DateLow="2828120532" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\SoundBanks\Default Work Unit.wwu" DateLow="1501409311" DateHigh="30519030"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Soundcaster Sessions\Default Work Unit.wwu" DateLow="2828305896" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\States\Default Work Unit.wwu" DateLow="2828686289" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Switches\Default Work Unit.wwu" DateLow="2828646248" DateHigh="30518982"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\PolyRunner\PolyRunner\wwise\runner\Triggers\Default Work Unit.wwu" DateLow="469498431" DateHigh="30519029"/>
+</ValidationCache>

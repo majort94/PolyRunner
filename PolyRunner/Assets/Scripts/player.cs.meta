@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: a0b5e9371aba4f0479651c232a1c2c27
-timeCreated: 1457806320
+timeCreated: 1463111233
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rend: {instanceID: 0}
+  - mat: {fileID: 2100000, guid: e9362d134693fc34a9b5da0f912283ff, type: 2}
+  - plane: {instanceID: 0}
+  - scoreText: {instanceID: 0}
+  - gameOverMat: {instanceID: 0}
+  - health: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
