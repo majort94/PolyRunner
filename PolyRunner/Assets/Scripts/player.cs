@@ -20,6 +20,7 @@ public class player : MonoBehaviour {
     public Text scoreText;
 
     public GameObject shipReference;
+    public GameObject constantRedShield;
 
     float strafe;
 
@@ -226,6 +227,7 @@ public class player : MonoBehaviour {
             firstHit = false;
 
             shipReference.GetComponent<EnergyShieldManager>().triggerBlueShieldAnim();
+            constantRedShield.SetActive(false);
             return;
         }
 

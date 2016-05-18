@@ -5,6 +5,7 @@ public class EnergyShieldManager : MonoBehaviour {
 
     public GameObject blueEnergyShield;
     public GameObject redEnergyShield;
+    public GameObject constantRedShield;
 
     private bool first = true;
 
@@ -35,6 +36,7 @@ public class EnergyShieldManager : MonoBehaviour {
         // create new energy shield object (player clone, damaged texture)
         Vector3 newPos = new Vector3(transform.position.x, 0f, transform.position.z);
         GameObject redShield = (GameObject)Instantiate(redEnergyShield, newPos, transform.rotation);
+        constantRedShield.SetActive(true);
         
         redShield.transform.localScale = new Vector3(128, 128, 128);
         redShield.transform.parent = GameObject.Find("/hydroplane/body").transform;
