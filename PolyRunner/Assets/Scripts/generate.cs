@@ -371,7 +371,7 @@ public class generate : MonoBehaviour {
             if(count == waveStart)
             {
                 int pick = (int)UnityEngine.Random.Range(0f, waves.Length);
-                pick = 1;
+                pick = 3;
                 wave = waves[pick];
 
                 Vector3 newPos = new Vector3();

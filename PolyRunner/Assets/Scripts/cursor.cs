@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.VR;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class cursor : MonoBehaviour {
 
@@ -21,13 +22,28 @@ public class cursor : MonoBehaviour {
     public Camera cam;
     public bool inMenu = false;
 
+    public GameObject[] screens;
+    private GameObject mainScreen;
+    public GameObject backButtonFix;
+
     void Start () {
         //InputTracking.Recenter();
         if (inMenu)
         {
             scaleInc = .1f;
-        }
 
+            mainScreen = screens[0];
+            if (GameObject.Find("GameManager"))
+            {
+                //Debug.Log("found");
+                //scoreText.text = "Score: " + (int) GameObject.Find("GameManager").GetComponent<stats>().scoreKeep;
+                screens[0].SetActive(false);
+                screens[4].SetActive(true);
+                screens[4].transform.Find("score").GetComponent<Text>().text = ((int)GameObject.Find("GameManager").GetComponent<stats>().scoreKeep).ToString();
+                mainScreen = screens[4];
+            }
+
+        }
 
     }
 
@@ -58,7 +74,44 @@ public class cursor : MonoBehaviour {
                 {
                     if (inMenu)
                     {
-                        SceneManager.LoadScene(1, LoadSceneMode.Single);
+                        string hitBox = hit.transform.name;
+                        switch (hitBox) {
+                            case "StartGameButton":
+                            case "TryAgainButton":
+                                SceneManager.LoadScene(1, LoadSceneMode.Single);
+                                break;
+                            case "InstructionsButton":
+                                mainScreen.SetActive(false); 
+                                screens[1].SetActive(true);
+                                break;
+                            case "BackButton1":
+                                mainScreen.SetActive(true);
+                                screens[1].SetActive(false);
+                                break;
+                            case "LeaderboardButton":
+                                mainScreen.SetActive(false);
+                                screens[2].SetActive(true);
+                                backButtonFix.SetActive(true);
+                                break;
+                            case "BackButton2":
+                                mainScreen.SetActive(true);
+                                screens[2].SetActive(false);
+                                backButtonFix.SetActive(false);
+                                break;
+                            case "CreditsButton":
+                                mainScreen.SetActive(false);
+                                screens[3].SetActive(true);
+                                break;
+                            case "BackButton3":
+                                mainScreen.SetActive(true);
+                                screens[3].SetActive(false);
+                                break;
+                            case "ExitGameButton":
+                                Application.Quit();
+                                break;
+                            default:
+                                break;
+                         }
                         return;
                     }
                     player.GetComponent<player>().begin = true;

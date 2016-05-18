@@ -122,8 +122,8 @@ public class stats : MonoBehaviour
             for (int i = 1; i <= size; i++)
             {
                 // Debug.Log("score" + i.ToString() + " " + PlayerPrefs.GetFloat("score" + i.ToString()));
-                GameObject.Find("/Canvas/table/" + i.ToString() + "/score").GetComponent<Text>().text = PlayerPrefs.GetFloat("score" + i.ToString()).ToString();
-                GameObject.Find("/Canvas/table/" + i.ToString() + "/date").GetComponent<Text>().text = PlayerPrefs.GetString("date" + i.ToString());
+                GameObject.Find("/Canvas/LeaderboardScreen/table/" + i.ToString() + "/score").GetComponent<Text>().text = PlayerPrefs.GetFloat("score" + i.ToString()).ToString();
+                GameObject.Find("/Canvas/LeaderboardScreen/table/" + i.ToString() + "/date").GetComponent<Text>().text = PlayerPrefs.GetString("date" + i.ToString());
 
             }
             //Leaderboards.WriteEntry("TestBoard", (long)scoreKeep);
